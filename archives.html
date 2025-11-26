@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nobody's Blog - Archives</title>
+    <link rel="stylesheet" href="https://example.com/theme/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@300;400;600&family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <h1 class="site-title"><a href="https://example.com/">Nobody's Blog</a></h1>
+            <nav class="site-nav">
+                <ul>
+                    <li><a href="https://example.com/">首頁</a></li>
+                    <li><a href="/category/inspiration.html">靈感與心得</a></li>
+                    <li><a href="/category/programming.html">程式相關</a></li>
+                    <li><a href="/pages/about.html">關於我</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <main class="site-main">
+    <h2>Archives for Nobody's Blog</h2>
+
+    <dl>
+            <dt>Tue 25 November 2025</dt>
+            <dd><a href="https://example.com/dummy-post-1.html">Dummy Post #1</a></dd>
+    </dl>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p class="motto">在縫隙中撿拾光影</p>
+            <p class="copyright">&copy;  Chia Yuan. Powered by <a href="https://getpelican.com/">Pelican</a>.</p>
+            <a href="#" class="back-to-top">↑</a>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smart Header Logic
+            let lastScrollTop = 0;
+            const header = document.querySelector('.site-header');
+            const scrollThreshold = 100; // Minimum scroll before hiding
+
+            window.addEventListener('scroll', function() {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+                    // Scroll Down
+                    header.classList.add('hidden');
+                } else {
+                    // Scroll Up
+                    header.classList.remove('hidden');
+                }
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+            });
+
+            // Nav Background Logic
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                const bgUrl = link.getAttribute('data-bg');
+                if (bgUrl) {
+                    const bgDiv = link.querySelector('.nav-bg');
+                    if (bgDiv) {
+                        bgDiv.style.backgroundImage = `url(${bgUrl})`;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
