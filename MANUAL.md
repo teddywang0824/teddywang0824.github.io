@@ -105,24 +105,59 @@ pelican -r -l
    git remote add origin https://github.com/您的帳號/my-blog.git
    ```
 
-### 步驟 2: 生成與發布
-每次要更新部落格時，請執行以下指令：
+### 步驟 2: 設定 GitHub Actions 自動部署
 
-1. **生成靜態檔案** (使用發布設定)：
-   ```bash
-   pelican content -s publishconf.py
+若希望每次 Push 程式碼時自動更新部落格，請依照以下步驟設定：
+
+1. 在專案根目錄建立資料夾 `.github/workflows/`。
+2. 在該資料夾內建立檔案 `deploy.yml`，內容如下：
+
+   ```yaml
+   name: Deploy to GitHub Pages
+
+   on:
+     push:
+       branches:
+         - main  # 請確認您的主分支名稱是 main 還是 master
+
+   jobs:
+     deploy:
+       runs-on: ubuntu-latest
+       permissions:
+         contents: write
+       concurrency:
+         group: ${{ github.workflow }}-${{ github.ref }}
+       steps:
+         - uses: actions/checkout@v4
+
+         - name: Setup Python
+           uses: actions/setup-python@v5
+           with:
+             python-version: '3.11'
+
+         - name: Install dependencies
+           run: pip install pelican markdown ghp-import
+
+         - name: Build
+           run: pelican content -s publishconf.py
+
+         - name: Deploy
+           uses: peaceiris/actions-gh-pages@v3
+           with:
+             github_token: ${{ secrets.GITHUB_TOKEN }}
+             publish_dir: ./output
    ```
 
-2. **發布到 gh-pages 分支**：
+3. 將所有檔案 Push 到 GitHub：
    ```bash
-   ghp-import output -b gh-pages -p
+   git add .
+   git commit -m "Add GitHub Actions workflow"
+   git push -u origin main
    ```
-   *(第一次執行可能需要輸入 GitHub 帳號密碼)*
 
-3. **設定 GitHub Pages**：
-   前往 GitHub Repository 的 **Settings** > **Pages**，確認 Source 選擇 `gh-pages` 分支。
+4. 前往 GitHub Repository 的 **Settings** > **Pages**，確認 Source 選擇 `gh-pages` 分支 (Action 執行成功後會自動建立此分支)。
 
-完成後，您的部落格就可以透過 `https://您的帳號.github.io/my-blog/` 訪問了！
+完成後，每次您 Push 新文章到 `main` 分支，GitHub Actions 就會自動幫您重新生成並發布網頁。
 
 ## 7. 常見問題
 
