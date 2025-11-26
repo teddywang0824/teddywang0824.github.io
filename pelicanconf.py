@@ -37,9 +37,9 @@ SLOGAN = [
 ]
 MOTTO = '在縫隙中撿拾光影'
 MAIN_MENU = True
-MENUITEMS = (('靈感與心得', '/category/inspiration.html'),
-             ('程式相關', '/category/programming.html'),
-             ('關於我', '/pages/about.html'),)
+MENUITEMS = (('靈感與心得', 'category/inspiration.html'),
+             ('程式相關', 'category/programming.html'),
+             ('關於我', 'pages/about.html'),)
 
 DISPLAY_PAGES_ON_MENU = False
 

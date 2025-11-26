@@ -19,7 +19,7 @@
                 <ul>
                     <li><a href="{{ SITEURL }}/">首頁</a></li>
                     {% for title, link in MENUITEMS %}
-                    <li><a href="{{ link }}">{{ title }}</a></li>
+                    <li><a href="{{ SITEURL }}/{{ link }}">{{ title }}</a></li>
                     {% endfor %}
                     {% if DISPLAY_PAGES_ON_MENU %}
                     {% for p in pages %}
