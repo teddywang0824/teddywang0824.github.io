@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@300;400;600&family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <h1 class="site-title"><a href="{{ SITEURL }}/">{{ SITENAME }}</a></h1>
+            <nav class="site-nav">
+                <ul>
+                    <li><a href="{{ SITEURL }}/">首頁</a></li>
+                    {% for title, link in MENUITEMS %}
+                    <li><a href="{{ link }}">{{ title }}</a></li>
+                    {% endfor %}
+                    {% if DISPLAY_PAGES_ON_MENU %}
+                    {% for p in pages %}
+                    <li><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+                    {% endfor %}
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    {% block hero %}{% endblock %}
+
+    <main class="site-main">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p class="motto">{{ MOTTO }}</p>
+            <p class="copyright">&copy; {{ COPYRIGHT_YEAR }} {{ AUTHOR }}. Powered by <a href="https://getpelican.com/">Pelican</a>.</p>
+            <a href="#" class="back-to-top">↑</a>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smart Header Logic
+            let lastScrollTop = 0;
+            const header = document.querySelector('.site-header');
+            const scrollThreshold = 100; // Minimum scroll before hiding
+
+            window.addEventListener('scroll', function() {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+                    // Scroll Down
+                    header.classList.add('hidden');
+                } else {
+                    // Scroll Up
+                    header.classList.remove('hidden');
+                }
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+            });
+
+            // Nav Background Logic
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                const bgUrl = link.getAttribute('data-bg');
+                if (bgUrl) {
+                    const bgDiv = link.querySelector('.nav-bg');
+                    if (bgDiv) {
+                        bgDiv.style.backgroundImage = `url(${bgUrl})`;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

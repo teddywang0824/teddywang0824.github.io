@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} - {{ SITENAME }}{% endblock %}
+
+{% block content %}
+<article class="single-post">
+    <header class="post-header">
+        <div class="post-category">
+            <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
+        </div>
+        <h1 class="post-title">{{ article.title }}</h1>
+        <div class="post-meta">
+            <span class="date">{{ article.date|strftime('%b %d, %Y') }}</span>
+            <span class="meta-separator">·</span>
+            <span class="read-time">☕️ {{ article.content|striptags|wordcount // 200 + 1 }} min read</span>
+        </div>
+    </header>
+
+    {% if article.image %}
+    <div class="hero-image-container">
+        <img src="{{ SITEURL }}/{{ article.image }}" alt="{{ article.title }}" class="hero-image">
+    </div>
+    {% endif %}
+
+    <div class="post-body">
+        {{ article.content }}
+        
+        <div class="end-mark">
+            <span>·</span><span>·</span><span>·</span>
+        </div>
+    </div>
+
+    <div class="post-footer">
+        <div class="post-tags">
+            {% for tag in article.tags %}
+            <a href="{{ SITEURL }}/{{ tag.url }}" class="tag">#{{ tag }}</a>
+            {% endfor %}
+        </div>
+
+        <div class="author-bio" onclick="window.location.href='{{ SITEURL }}/pages/about'" style="cursor: pointer">
+            <div class="author-avatar">
+                <img src="{{ SITEURL }}/theme/images/profile.jpg" alt="{{ AUTHOR }}">
+            </div>
+            <div class="author-info">
+                <h4>{{ AUTHOR }}</h4>
+                <p>A Nobody who loves to try different things.</p>
+            </div>
+        </div>
+
+        <div class="post-navigation">
+            {% if article.prev_article %}
+            <a href="{{ SITEURL }}/{{ article.prev_article.url }}" class="nav-link prev" {% if article.prev_article.image %}data-bg="{{ SITEURL }}/{{ article.prev_article.image }}"{% endif %}>
+                <div class="nav-bg"></div>
+                <div class="nav-content">
+                    <span class="nav-label">Previous</span>
+                    <span class="nav-title">{{ article.prev_article.title }}</span>
+                </div>
+            </a>
+            {% endif %}
+            {% if article.next_article %}
+            <a href="{{ SITEURL }}/{{ article.next_article.url }}" class="nav-link next" {% if article.next_article.image %}data-bg="{{ SITEURL }}/{{ article.next_article.image }}"{% endif %}>
+                <div class="nav-bg"></div>
+                <div class="nav-content">
+                    <span class="nav-label">Next</span>
+                    <span class="nav-title">{{ article.next_article.title }}</span>
+                </div>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</article>
+{% endblock %}

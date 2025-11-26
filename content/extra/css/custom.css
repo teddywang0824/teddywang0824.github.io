@@ -1,0 +1,39 @@
+/* Literary (Wenqing) Style Overrides */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600&display=swap');
+
+body {
+    background-color: #f9f7f1; /* Warm paper white */
+    color: #4a4a4a; /* Soft charcoal */
+    font-family: 'Noto Serif TC', 'Georgia', serif;
+}
+
+/* Sidebar overrides */
+aside {
+    background-color: #f0ebe1; /* Slightly darker beige */
+}
+
+aside .profile img {
+    border: 3px solid #dcd6cc;
+}
+
+/* Link colors */
+a {
+    color: #8c7b75; /* Muted Taupe */
+}
+
+a:hover {
+    color: #5e504c;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    color: #2c2c2c;
+    font-weight: 600;
+}
+
+/* Code blocks */
+pre {
+    background-color: #eee8d5;
+    border: 1px solid #dcd6cc;
+}

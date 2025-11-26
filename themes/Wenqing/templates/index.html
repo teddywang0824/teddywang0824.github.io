@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block hero %}
+<section class="hero" style="background-image: url('{{ SITEURL }}/theme/images/hero.jpg');">
+    <div class="hero-overlay">
+        <h2 class="hero-slogan">
+            {% set ns = namespace(counter=0) %}
+            {% for group in SLOGAN %}
+            <div class="slogan-group">
+                {% for part in group %}
+                <span class="slogan-part" style="--delay: {{ ns.counter * 1.5 }}s">{{ part }}</span>
+                {% set ns.counter = ns.counter + 1 %}
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </h2>
+    </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<div class="home-container">
+    <div class="tag-cloud-section">
+        <h3 class="tag-cloud-title"><span class="title-accent">|</span> 標籤</h3>
+        <div class="tag-cloud">
+            {% if category %}
+                {# Filter tags for this category #}
+                {% if tags %}
+                    {% for tag, tag_articles in tags|sort %}
+                        {% set ns = namespace(found=false) %}
+                        {% for article in tag_articles %}
+                            {% if article.category == category %}
+                                {% set ns.found = true %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if ns.found %}
+                            <a href="{{ SITEURL }}/{{ tag.url }}" class="tag-item">{{ tag }}</a>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% else %}
+                {# Show all tags #}
+                {% if tags %}
+                    {% for tag, tag_articles in tags|sort %}
+                        <a href="{{ SITEURL }}/{{ tag.url }}" class="tag-item">{{ tag }}</a>
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="post-list">
+        {% set posts = articles_page.object_list if articles_page else articles %}
+        {% for article in posts %}
+        <article class="post-card {% if loop.index is even %}reverse{% endif %} reveal-on-scroll" data-category="{{ article.category }}">
+            <div class="post-image">
+                {% if article.image %}
+                <img src="{{ SITEURL }}/{{ article.image }}" alt="{{ article.title }}">
+                {% else %}
+                <div class="placeholder-image {% if article.category == 'Programming' %}placeholder-bg-programming{% else %}placeholder-bg-default{% endif %}"></div>
+                {% endif %}
+            </div>
+            <div class="post-content">
+                <div class="post-meta">
+                    <span class="date">{{ article.date|strftime('%Y-%m-%d') }}</span>
+                    <span class="category category-{{ article.category.slug }}">{{ article.category }}</span>
+                </div>
+                <h3 class="post-title"><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h3>
+                <div class="post-summary">
+                    {{ article.summary|striptags|truncate(100) }}
+                </div>
+                
+                {% if article.tags %}
+                <div class="article-tags">
+                    {% for tag in article.tags %}
+                    <a href="{{ SITEURL }}/{{ tag.url }}" class="tag">#{{ tag }}</a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+                <a href="{{ SITEURL }}/{{ article.url }}" class="read-more">閱讀全文</a>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+</div>
+
+{% if articles_page and articles_page.has_other_pages() %}
+<div class="pagination">
+    {% if articles_page.has_previous() %}
+        {% if articles_page.previous_page_number() == 1 %}
+        <a class="page-item prev" href="{{ SITEURL }}/index.html">&lt;</a>
+        {% else %}
+        <a class="page-item prev" href="{{ SITEURL }}/index{{ articles_page.previous_page_number() }}.html">&lt;</a>
+        {% endif %}
+    {% endif %}
+    
+    {% for num in range(1, articles_page.paginator.num_pages + 1) %}
+        <a class="page-item {% if num == articles_page.number %}active{% endif %}" href="{{ SITEURL }}/{{ 'index' if num == 1 else 'index' ~ num }}.html">{{ num }}</a>
+    {% endfor %}
+
+    {% if articles_page.has_next() %}
+    <a class="page-item next" href="{{ SITEURL }}/index{{ articles_page.next_page_number() }}.html">&gt;</a>
+    {% endif %}
+</div>
+{% endif %}
+
+<script>
+    // Scroll Animation Observer
+    document.addEventListener("DOMContentLoaded", function() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
+            observer.observe(el);
+        });
+    });
+</script>
+{% endblock %}

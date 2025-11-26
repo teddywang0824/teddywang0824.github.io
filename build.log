@@ -1,0 +1,331 @@
+[20:38:06] DEBUG    Pelican version: 4.11.0.post0               __init__.py:644
+           DEBUG    Python version: 3.11.7                      __init__.py:645
+           DEBUG    Adding current directory to system path      __init__.py:70
+           DEBUG    Finding namespace plugins                      _utils.py:96
+           DEBUG    Loading plugin `context_patch`                _utils.py:104
+           DEBUG    Registering plugin `context_patch`           __init__.py:77
+           DEBUG    Found generator: ArticlesGenerator          __init__.py:232
+                    (internal)                                                 
+           DEBUG    Found generator: PagesGenerator (internal)  __init__.py:232
+           DEBUG    Found generator: StaticGenerator (internal) __init__.py:232
+           DEBUG    Template list: ['!simple/archives.html',   generators.py:92
+                    '!simple/article.html',                                    
+                    '!simple/author.html',                                     
+                    '!simple/authors.html',                                    
+                    '!simple/base.html',                                       
+                    '!simple/categories.html',                                 
+                    '!simple/category.html',                                   
+                    '!simple/index.html', '!simple/page.html',                 
+                    '!simple/pagination.html',                                 
+                    '!simple/period_archives.html',                            
+                    '!simple/tag.html', '!simple/tags.html',                   
+                    '!simple/translations.html',                               
+                    '!theme/about.html',                                       
+                    '!theme/article.html', '!theme/base.html',                 
+                    '!theme/index.html', '!theme/page.html',                   
+                    'about.html', 'archives.html',                             
+                    'article.html', 'author.html',                             
+                    'authors.html', 'base.html',                               
+                    'categories.html', 'category.html',                        
+                    'index.html', 'page.html',                                 
+                    'pagination.html', 'period_archives.html',                 
+                    'tag.html', 'tags.html',                                   
+                    'translations.html']                                       
+           DEBUG    Read file dummy_post_4.md -> Article         readers.py:586
+           DEBUG    Signal                                       readers.py:595
+                    article_generator_preread.send(ArticlesGener               
+                    ator)                                                      
+           DEBUG    Successfully imported extension module          core.py:226
+                    "markdown.extensions.codehilite".                          
+           DEBUG    Successfully loaded extension                   core.py:182
+                    "markdown.extensions.codehilite.CodeHiliteExten            
+                    sion".                                                     
+           DEBUG    Successfully imported extension module          core.py:226
+                    "markdown.extensions.extra".                               
+           DEBUG    Successfully loaded extension                   core.py:182
+                    "markdown.extensions.fenced_code.FencedCodeExte            
+                    nsion".                                                    
+           DEBUG    Successfully loaded extension                   core.py:182
+                    "markdown.extensions.footnotes.FootnoteExtensio            
+                    n".                                                        
+           DEBUG    Successfully loaded extension                   core.py:182
+                    "markdown.extensions.attr_list.AttrListExtensio            
+                    n".                                                        
+           DEBUG    Successfully loaded extension                   core.py:182
+                    "markdown.extensions.def_list.DefListExtension"            
+                    .                                                          
+           DEBUG    Successfully loaded extension                   core.py:182
+                    "markdown.extensions.tables.TableExtension".               
+           DEBUG    Successfully loaded extension                   core.py:182
+                    "markdown.extensions.abbr.AbbrExtension".                  
+           DEBUG    Successfully loaded extension                   core.py:182
+                    "markdown.extensions.md_in_html.MarkdownInHtmlE            
+                    xtension".                                                 
+           DEBUG    Successfully loaded extension                   core.py:182
+                    "markdown.extensions.extra.ExtraExtension".                
+           DEBUG    Successfully imported extension module          core.py:226
+                    "markdown.extensions.meta".                                
+           DEBUG    Successfully loaded extension                   core.py:182
+                    "markdown.extensions.meta.MetaExtension".                  
+           DEBUG    Signal                                       readers.py:678
+                    article_generator_context.send(ArticlesGener               
+                    ator, <metadata>)                                          
+           DEBUG    Read file dummy_post_14.md -> Article        readers.py:586
+           DEBUG    Read file dummy_post_3.md -> Article         readers.py:586
+           DEBUG    Read file dummy_post_15.md -> Article        readers.py:586
+           DEBUG    Read file dummy_post_12.md -> Article        readers.py:586
+           DEBUG    Read file dummy_post_9.md -> Article         readers.py:586
+           DEBUG    Read file dummy_post_11.md -> Article        readers.py:586
+           DEBUG    Read file dummy_post_8.md -> Article         readers.py:586
+           DEBUG    Read file dummy_post_1.md -> Article         readers.py:586
+           DEBUG    Read file dummy_post_13.md -> Article        readers.py:586
+           DEBUG    Read file testEmo.md -> Article              readers.py:586
+[20:38:07] DEBUG    Read file dummy_post_2.md -> Article         readers.py:586
+           DEBUG    Read file dummy_post_7.md -> Article         readers.py:586
+           DEBUG    Read file dummy_post_6.md -> Article         readers.py:586
+           DEBUG    Read file dummy_post_10.md -> Article        readers.py:586
+           DEBUG    Read file dummy_post_5.md -> Article         readers.py:586
+           INFO     Plugin: Storing 16 articles.            context_patch.py:12
+           DEBUG    Read file pages/about.md -> Page             readers.py:586
+           DEBUG    Signal                                       readers.py:595
+                    page_generator_preread.send(PagesGenerator)                
+           DEBUG    Signal                                       readers.py:678
+                    page_generator_context.send(PagesGenerator,                
+                    <metadata>)                                                
+           DEBUG    Signal                                      __init__.py:132
+                    all_generators_finalized.send(<generators>)                
+           INFO     Plugin: Injecting articles. Count: 16   context_patch.py:18
+           INFO     Plugin: Found About page, injecting     context_patch.py:25
+                    articles.                                                  
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/post-1.html                                           
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/�o�O���դ峹.html                                     
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/post-2.html                                           
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/post-3.html                                           
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/post-4.html                                           
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/post-5.html                                           
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/post-6.html                                           
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/post-7.html                                           
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/post-8.html                                           
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/post-9.html                                           
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/post-10.html                                          
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/post-11.html                                          
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/post-12.html                                          
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/post-13.html                                          
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/post-14.html                                          
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/post-15.html                                          
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/index.html                                            
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/index2.html                                           
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/tags.html                                             
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/categories.html                                       
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/authors.html                                          
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/archives.html                                         
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/tag/tech.html                                         
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/tag/code.html                                         
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/tag/learning.html                                     
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/tag/about-me.html                                     
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/tag/emo.html                                          
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/tag/life.html                                         
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/tag/reading.html                                      
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/tag/thoughts.html                                     
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/category/inspiration.html                             
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/category/programming.html                             
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/author/user.html                                      
+           INFO     Writing                                      writers.py:225
+                    D:/CodeProject/react_project/personalBlog/ou               
+                    tput/author/user2.html                                     
+           CRITICAL TemplateSyntaxError: Encountered unknown    __init__.py:683
+                    tag 'cycle'. Jinja was looking for the                     
+                    following tags: 'elif' or 'else' or                        
+                    'endif'. The innermost block that needs to                 
+                    be closed is 'if'.                                         
++--------------------- Traceback (most recent call last) ---------------------+
+| C:\Users\88691\AppData\Local\Programs\Python\Python311\Lib\site-packages\pe |
+| lican\__init__.py:679 in main                                               |
+|                                                                             |
+|   676             )                                                         |
+|   677         else:                                                         |
+|   678             with console.status("Generating..."):                     |
+| > 679                 pelican.run()                                         |
+|   680     except KeyboardInterrupt:                                         |
+|   681         logger.warning("Keyboard interrupt received. Exiting.")       |
+|   682     except Exception as e:                                            |
+|                                                                             |
+| C:\Users\88691\AppData\Local\Programs\Python\Python311\Lib\site-packages\pe |
+| lican\__init__.py:144 in run                                                |
+|                                                                             |
+|   141                                                                       |
+|   142         for p in generators:                                          |
+|   143             if hasattr(p, "generate_output"):                         |
+| > 144                 p.generate_output(writer)                             |
+|   145                                                                       |
+|   146         signals.finalized.send(self)                                  |
+|   147                                                                       |
+|                                                                             |
+| C:\Users\88691\AppData\Local\Programs\Python\Python311\Lib\site-packages\pe |
+| lican\generators.py:959 in generate_output                                  |
+|                                                                             |
+|    956             signals.page_generator_write_page.send(self, content=pag |
+|    957             writer.write_file(                                       |
+|    958                 page.save_as,                                        |
+| >  959                 self.get_template(page.template),                    |
+|    960                 self.context,                                        |
+|    961                 page=page,                                           |
+|    962                 relative_urls=self.settings["RELATIVE_URLS"],        |
+|                                                                             |
+| C:\Users\88691\AppData\Local\Programs\Python\Python311\Lib\site-packages\pe |
+| lican\generators.py:122 in get_template                                     |
+|                                                                             |
+|    119         if name not in self._templates:                              |
+|    120             for ext in self.settings["TEMPLATE_EXTENSIONS"]:         |
+|    121                 try:                                                 |
+| >  122                     self._templates[name] = self.env.get_template(na |
+|    123                     break                                            |
+|    124                 except TemplateNotFound:                             |
+|    125                     continue                                         |
+|                                                                             |
+| C:\Users\88691\AppData\Local\Programs\Python\Python311\Lib\site-packages\ji |
+| nja2\environment.py:1010 in get_template                                    |
+|                                                                             |
+|   1007         if parent is not None:                                       |
+|   1008             name = self.join_path(name, parent)                      |
+|   1009                                                                      |
+| > 1010         return self._load_template(name, globals)                    |
+|   1011                                                                      |
+|   1012     @internalcode                                                    |
+|   1013     def select_template(                                             |
+|                                                                             |
+| C:\Users\88691\AppData\Local\Programs\Python\Python311\Lib\site-packages\ji |
+| nja2\environment.py:969 in _load_template                                   |
+|                                                                             |
+|    966                                                                      |
+|    967                 return template                                      |
+|    968                                                                      |
+| >  969         template = self.loader.load(self, name, self.make_globals(gl |
+|    970                                                                      |
+|    971         if self.cache is not None:                                   |
+|    972             self.cache[cache_key] = template                         |
+|                                                                             |
+| C:\Users\88691\AppData\Local\Programs\Python\Python311\Lib\site-packages\ji |
+| nja2\loaders.py:572 in load                                                 |
+|                                                                             |
+|   569     ) -> "Template":                                                  |
+|   570         for loader in self.loaders:                                   |
+|   571             try:                                                      |
+| > 572                 return loader.load(environment, name, globals)        |
+|   573             except TemplateNotFound:                                  |
+|   574                 pass                                                  |
+|   575         raise TemplateNotFound(name)                                  |
+|                                                                             |
+| C:\Users\88691\AppData\Local\Programs\Python\Python311\Lib\site-packages\ji |
+| nja2\loaders.py:137 in load                                                 |
+|                                                                             |
+|   134         # if we don't have code so far (not cached, no longer up to   |
+|   135         # date) etc. we compile the template                          |
+|   136         if code is None:                                              |
+| > 137             code = environment.compile(source, name, filename)        |
+|   138                                                                       |
+|   139         # if the bytecode cache is available and the bucket doesn't   |
+|   140         # have a code so far, we give the bucket the new code and put |
+|                                                                             |
+| C:\Users\88691\AppData\Local\Programs\Python\Python311\Lib\site-packages\ji |
+| nja2\environment.py:768 in compile                                          |
+|                                                                             |
+|    765                 filename = "<template>"                              |
+|    766             return self._compile(source, filename)                   |
+|    767         except TemplateSyntaxError:                                  |
+| >  768             self.handle_exception(source=source_hint)                |
+|    769                                                                      |
+|    770     def compile_expression(                                          |
+|    771         self, source: str, undefined_to_none: bool = True            |
+|                                                                             |
+| C:\Users\88691\AppData\Local\Programs\Python\Python311\Lib\site-packages\ji |
+| nja2\environment.py:936 in handle_exception                                 |
+|                                                                             |
+|    933         """                                                          |
+|    934         from .debug import rewrite_traceback_stack                   |
+|    935                                                                      |
+| >  936         raise rewrite_traceback_stack(source=source)                 |
+|    937                                                                      |
+|    938     def join_path(self, template: str, parent: str) -> str:          |
+|    939         """Join a template with the parent.  By default all the look |
+|                                                                             |
+| D:\CodeProject\react_project\personalBlog\themes\Wenqing\templates\about.ht |
+| ml:17 in template                                                           |
+|                                                                             |
+|   14                 {% if 'about-me' in article.tags|map(attribute='slug') |
+|   15                 <a href="{{ SITEURL }}/{{ article.url }}" class="artic |
+|   16                     <div class="article-card-item">                    |
+| > 17                         <div class="card-image-placeholder" style="bac |
+|   18                         <div class="card-content">                     |
+|   19                             <h3>{{ article.title }}</h3>               |
+|   20                             <p>{{ article.summary|striptags|truncate(5 |
++-----------------------------------------------------------------------------+
+TemplateSyntaxError: Encountered unknown tag 'cycle'. Jinja was looking for the
+following tags: 'elif' or 'else' or 'endif'. The innermost block that needs to 
+be closed is 'if'.

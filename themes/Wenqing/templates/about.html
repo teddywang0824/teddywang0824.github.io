@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} - {{ SITENAME }}{% endblock %}
+
+{% block content %}
+<div class="page-wrapper">
+    {{ page.content }}
+
+    {% if page.articles %}
+    <div class="about-articles-section">
+        <h2 class="section-title-literary">更多關於我</h2>
+        <div class="article-cards-grid">
+            {% set colors = cycler('bg-color-1', 'bg-color-2', 'bg-color-3', 'bg-color-4', 'bg-color-5') %}
+            {% for article in page.articles %}
+                {% if 'about-me' in article.tags|map(attribute='slug') %}
+                <a href="{{ SITEURL }}/{{ article.url }}" class="article-card-link">
+                    <div class="article-card-item">
+                        <div class="card-image-placeholder {{ colors.next() }}"></div>
+                        <div class="card-content">
+                            <h3>{{ article.title }}</h3>
+                            <p>{{ article.summary|striptags|truncate(50) }}</p>
+                        </div>
+                    </div>
+                </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
