@@ -32,13 +32,14 @@ DEFAULT_PAGINATION = 10
 THEME = 'themes/Wenqing'
 SITETITLE = '微光手札'
 SLOGAN = [
-    ['在此刻，','世界安靜得', '只剩下呼吸。'],
-    ['尋找著', '存在的意義']
+    ['是劇中過客 ','也是書裡路人 ', '興來提筆意隨心'],
+    ['拾靈感  ', '寫天真 ', '縫中拾影'],
+    ['只為留痕  ', '非是才人']
 ]
 MOTTO = '在縫隙中撿拾光影'
 MAIN_MENU = True
-MENUITEMS = (('靈感與心得', 'category/inspiration.html'),
-             ('程式相關', 'category/programming.html'),
+MENUITEMS = (('生活與靈感', 'category/inspiration.html'),
+             ('程式與科技', 'category/programming.html'),
              ('關於我', 'pages/about.html'),)
 
 DISPLAY_PAGES_ON_MENU = False
