@@ -47,7 +47,10 @@ DISPLAY_PAGES_ON_MENU = False
 DEFAULT_PAGINATION = 10
 
 # Custom CSS (Removed as it is now built-in to the theme)
-STATIC_PATHS = ['images']
+STATIC_PATHS = ['images','extra']
+EXTRA_PATH_METADATA = {
+    'extra/CNAME': {'path': 'CNAME'},
+}
 # EXTRA_PATH_METADATA = {
 #     'extra/css/custom.css': {'path': 'static/custom.css'}
 # }
