@@ -69,10 +69,113 @@
             </div>
         </div>
 
+        <div id="comments-section" class="comments-section">
+            <h3>留言板</h3>
+            
+            <div id="comment-list" class="comment-list">
+                <p class="loading-text">載入留言中...</p>
+            </div>
+
+            <form id="comment-form" class="comment-form">
+                <input type="text" id="name" placeholder="暱稱" required class="comment-input">
+                <textarea id="content" placeholder="寫下你的留言..." required class="comment-textarea"></textarea>
+                <button type="submit" class="comment-submit-btn">送出留言</button>
+            </form>
+        </div>
+
         <div class="post-navigation">
         </div>
     </div>
 </article>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, query, where, orderBy, onSnapshot, serverTimestamp } 
+    from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+  // 1. 貼上你的 Firebase Config
+  // 請到 Firebase Console > Project Settings > General > Your apps 複製設定
+  const firebaseConfig = {
+    apiKey: "AIzaSyDwGcqOZctTprEDddbGKKid7dgu4lOCb2Y",
+    authDomain: "nobody-s-blog-comment.firebaseapp.com",
+    projectId: "nobody-s-blog-comment",
+    storageBucket: "nobody-s-blog-comment.firebasestorage.app",
+    messagingSenderId: "1085772418942",
+    appId: "1:1085772418942:web:00f337e41831f8efeaed2f",
+    measurementId: "G-P3PBN9CLRP"
+  };
+
+  // 2. 初始化
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  
+  // 取得目前文章的唯一識別 (Slug)
+  const articleSlug = "dummy-post-1"; 
+
+  const commentsRef = collection(db, "comments");
+  const q = query(
+      commentsRef, 
+      where("slug", "==", articleSlug), 
+      orderBy("createdAt", "desc")
+  );
+
+  // 3. 監聽留言
+  const list = document.getElementById("comment-list");
+  onSnapshot(q, (snapshot) => {
+      let html = "";
+      if (snapshot.empty) {
+          html = "<p class='no-comments'>目前還沒有留言，搶頭香！</p>";
+      } else {
+          snapshot.forEach((doc) => {
+              const data = doc.data();
+              const name = data.name ? data.name.replace(/</g, "&lt;") : "匿名"; 
+              const content = data.content ? data.content.replace(/</g, "&lt;") : "";
+              const date = data.createdAt ? new Date(data.createdAt.seconds * 1000).toLocaleString() : '剛剛';
+              
+              html += `
+                  <div class="comment-item">
+                      <div class="comment-header">
+                          <span class="comment-author">${name}</span>
+                          <span class="comment-date">${date}</span>
+                      </div>
+                      <p class="comment-content">${content}</p>
+                  </div>
+              `;
+          });
+      }
+      list.innerHTML = html;
+  });
+
+  // 4. 送出留言
+  const form = document.getElementById("comment-form");
+  form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const content = document.getElementById("content").value;
+      const btn = form.querySelector("button");
+
+      if(!name || !content) return;
+
+      btn.disabled = true;
+      btn.innerText = "送出中...";
+
+      try {
+          await addDoc(commentsRef, {
+              slug: articleSlug,
+              name: name,
+              content: content,
+              createdAt: serverTimestamp()
+          });
+          form.reset(); 
+      } catch (error) {
+          console.error("Error adding comment: ", error);
+          alert("留言失敗，請檢查網路設定或 Firebase Config");
+      } finally {
+          btn.disabled = false;
+          btn.innerText = "送出留言";
+      }
+  });
+</script>
     </main>
 
     <footer class="site-footer">
